@@ -107,18 +107,46 @@ public class Clock{
         int h12 = getTimeHours();
         int m12 = getTimeMinutes();
         converter_12(h12, h12);
-        DateFormat displayFormat = new SimpleDateFormat("HH:mm a");
+        /**DateFormat displayFormat = new SimpleDateFormat("HH:mm a");
         String sdate = toString();
         Date d = dateFormat.parse(sdate);
+**/
 
 
-
-        System.out.println("Current time is " + d);
+        System.out.println("Current time is " + getTimeHours() + ":" + getTimeMinutes());
         System.out.println();
     }
         public void display_24(){
         System.out.println("Current time is " + getTimeHours() +":"+ getTimeMinutes());
         System.out.println();
+    }
+
+    public void setAlarm(){
+        System.out.println("Enter Hour");
+        Scanner a_hour = new Scanner(System.in);
+        int a_hour1 = a_hour.nextInt();
+        if (a_hour1 > 24) {
+            System.out.println("Hour is invalid");
+        }
+
+
+        System.out.println("Enter Minutes");
+        Scanner a_min = new Scanner(System.in);
+        int a_min1 = a_min.nextInt();
+        if (a_min1 >= 60){
+            a_hour1 = a_hour1 + 1;
+            if (a_hour1 >12) {
+                a_hour1 = a_hour1 - 12;
+            }
+            a_min1 =a_min1 - 60;
+        }
+        alarmHours = a_hour1;
+        alarmMinutes = a_min1;
+        setAlarmHours(a_hour1);
+        setTimeMinutes(a_min1);
+
+        System.out.println("Alarm has been set for " + getAlarmHours() +":" + getAlarmMinutes());
+
     }
 
     public void menu() {
@@ -148,7 +176,10 @@ public class Clock{
             case 3: setTime();
             menu();
             break;
-            case 4: break;
+            case 4: setAlarm();
+            menu();
+            break;
+            case 5: break;
 
 
         }
