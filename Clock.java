@@ -156,12 +156,17 @@ public class Clock{
 
         /***************************************************/
 
-        System.out.println("Alarm Clock App. What would you like to do");
+        System.out.println("-------------------------\n" +
+                "Alarm Clock App. " + "\n -------------------------\n" +
+                "The time now is "+ getTimeHours() + ":"
+                +getTimeMinutes() + "\n -------------------------\n"
+                + "What would you like to do?");
         System.out.println("-------------------------\n");
         System.out.println("1 - Display time in 12 hour format");
         System.out.println("2 - Display time in 24 hour format");
         System.out.println("3 - Set the time");
-        System.out.println("4 - Quit");
+        System.out.println("4 - Set Alarm");
+        System.out.println("5 - Quit");
 
         selection = input.nextInt();
         switch (selection){
