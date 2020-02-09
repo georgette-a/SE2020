@@ -57,20 +57,24 @@ public class Clock{
     }
 
 
-
+//function to set time
 
     public void setTime() {
+        //set hours
         System.out.println("Enter Hour");
         Scanner t_hour = new Scanner(System.in);
         int t_hour1 = t_hour.nextInt();
+        //check if input is right
         if (t_hour1 > 24) {
             System.out.println("Hour is invalid");
+            Scanner t_hour_retry = new Scanner(System.in);
+            t_hour1 = t_hour_retry.nextInt();
         }
-
-
+        //set minutes
         System.out.println("Enter Minutes");
         Scanner t_min = new Scanner(System.in);
         int t_min1 = t_min.nextInt();
+        //check if minutes are more than 60, subtract and add extra hours if so
         if (t_min1 >= 60){
             t_hour1 = t_hour1 + 1;
             if (t_hour1 >12) {
@@ -85,6 +89,7 @@ public class Clock{
 
         System.out.println("Time has been set to " + getTimeHours() +":" + getTimeMinutes());
     }
+    //convert time to 12-hour format
     public void converter_12(int timeHours, int timeMinutes){
         if (timeHours < 12){
             ampm = "AM";
@@ -97,12 +102,13 @@ public class Clock{
         setTimeHours(timeHours);
         setTimeMinutes(timeMinutes);
     }
-
+    //tostring method for date conversion [not used yet]
     @Override
     public String toString() {
         return timeHours + ":" + timeMinutes;
     }
 
+    //display in 12-hour format
     public void display_12(){
         int h12 = getTimeHours();
         int m12 = getTimeMinutes();
@@ -116,11 +122,14 @@ public class Clock{
         System.out.println("Current time is " + getTimeHours() + ":" + getTimeMinutes());
         System.out.println();
     }
-        public void display_24(){
+
+    //display in 24-hour format
+    public void display_24(){
         System.out.println("Current time is " + getTimeHours() +":"+ getTimeMinutes());
         System.out.println();
     }
 
+    //set alarm
     public void setAlarm(){
         System.out.println("Enter Hour");
         Scanner a_hour = new Scanner(System.in);
@@ -149,6 +158,7 @@ public class Clock{
 
     }
 
+    //menu for user interaction
     public void menu() {
 
         int selection;
@@ -189,7 +199,7 @@ public class Clock{
 
         }
     }
-
+//main method to run the program
 public static void main (String[] args){
         Clock test = new Clock();
         test.menu();
